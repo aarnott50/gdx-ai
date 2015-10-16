@@ -32,7 +32,7 @@ import com.badlogic.gdx.ai.sched.LoadBalancingScheduler;
 import com.badlogic.gdx.ai.tests.PathFinderTests;
 import com.badlogic.gdx.ai.tests.pfa.PathFinderTestBase;
 import com.badlogic.gdx.ai.tests.pfa.tests.tiled.TiledManhattanDistance;
-import com.badlogic.gdx.ai.tests.pfa.tests.tiled.TiledNode;
+import com.badlogic.gdx.ai.tests.pfa.tests.tiled.IndexedTiledNode;
 import com.badlogic.gdx.ai.tests.pfa.tests.tiled.TiledRaycastCollisionDetector;
 import com.badlogic.gdx.ai.tests.pfa.tests.tiled.TiledSmoothableGraphPath;
 import com.badlogic.gdx.ai.tests.pfa.tests.tiled.flat.FlatTiledGraph;
@@ -211,10 +211,10 @@ public class InterruptibleFlatTiledAStarTest extends PathFinderTestBase implemen
 		for (int x = 0; x < FlatTiledGraph.sizeX; x++) {
 			for (int y = 0; y < FlatTiledGraph.sizeY; y++) {
 				switch (worldMap.getNode(x, y).type) {
-				case TiledNode.TILE_FLOOR:
+				case IndexedTiledNode.TILE_FLOOR:
 					renderer.setColor(Color.WHITE);
 					break;
-				case TiledNode.TILE_WALL:
+				case IndexedTiledNode.TILE_WALL:
 					renderer.setColor(Color.GRAY);
 					break;
 				default:
@@ -298,8 +298,8 @@ public class InterruptibleFlatTiledAStarTest extends PathFinderTestBase implemen
 		if (forceUpdate || tileX != lastEndTileX || tileY != lastEndTileY) {
 			final FlatTiledNode startNode = worldMap.getNode(startTileX, startTileY);
 			FlatTiledNode endNode = worldMap.getNode(tileX, tileY);
-			if (forceUpdate || endNode.type == TiledNode.TILE_FLOOR) {
-				if (endNode.type == TiledNode.TILE_FLOOR) {
+			if (forceUpdate || endNode.type == IndexedTiledNode.TILE_FLOOR) {
+				if (endNode.type == IndexedTiledNode.TILE_FLOOR) {
 					lastEndTileX = tileX;
 					lastEndTileY = tileY;
 				} else {
@@ -378,7 +378,7 @@ public class InterruptibleFlatTiledAStarTest extends PathFinderTestBase implemen
 			int tileX = (int)(test.tmpUnprojection.x / width);
 			int tileY = (int)(test.tmpUnprojection.y / width);
 			FlatTiledNode startNode = test.worldMap.getNode(tileX, tileY);
-			if (startNode.type == TiledNode.TILE_FLOOR) {
+			if (startNode.type == IndexedTiledNode.TILE_FLOOR) {
 				test.startTileX = tileX;
 				test.startTileY = tileY;
 				test.updatePath(true);

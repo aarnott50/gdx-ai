@@ -33,7 +33,7 @@ import com.badlogic.gdx.ai.sched.LoadBalancingScheduler;
 import com.badlogic.gdx.ai.tests.PathFinderTests;
 import com.badlogic.gdx.ai.tests.pfa.PathFinderTestBase;
 import com.badlogic.gdx.ai.tests.pfa.tests.tiled.TiledManhattanDistance;
-import com.badlogic.gdx.ai.tests.pfa.tests.tiled.TiledNode;
+import com.badlogic.gdx.ai.tests.pfa.tests.tiled.IndexedTiledNode;
 import com.badlogic.gdx.ai.tests.pfa.tests.tiled.TiledRaycastCollisionDetector;
 import com.badlogic.gdx.ai.tests.pfa.tests.tiled.TiledSmoothableGraphPath;
 import com.badlogic.gdx.ai.tests.pfa.tests.tiled.hrchy.HierarchicalTiledGraph;
@@ -224,10 +224,10 @@ public class InterruptibleHierarchicalTiledAStarTest extends PathFinderTestBase 
 		for (int x = 0; x < xMax; x++) {
 			for (int y = 0; y < yMax; y++) {
 				switch (worldMap.getNode(x, y).type) {
-				case TiledNode.TILE_FLOOR:
+				case IndexedTiledNode.TILE_FLOOR:
 					renderer.setColor(Color.WHITE);
 					break;
-				case TiledNode.TILE_WALL:
+				case IndexedTiledNode.TILE_WALL:
 					renderer.setColor(Color.GRAY);
 					break;
 				default:
@@ -344,8 +344,8 @@ public class InterruptibleHierarchicalTiledAStarTest extends PathFinderTestBase 
 			worldMap.setLevel(0);
 			HierarchicalTiledNode startNode = worldMap.getNode(startTileX, startTileY);
 			HierarchicalTiledNode endNode = worldMap.getNode(tileX, tileY);
-			if (forceUpdate || endNode.type == TiledNode.TILE_FLOOR) {
-				if (endNode.type == TiledNode.TILE_FLOOR) {
+			if (forceUpdate || endNode.type == IndexedTiledNode.TILE_FLOOR) {
+				if (endNode.type == IndexedTiledNode.TILE_FLOOR) {
 					lastEndTileX = tileX;
 					lastEndTileY = tileY;
 				} else {
@@ -418,7 +418,7 @@ public class InterruptibleHierarchicalTiledAStarTest extends PathFinderTestBase 
 			int tileY = (int)(test.tmpUnprojection.y / width);
 			test.worldMap.setLevel(0);
 			HierarchicalTiledNode startNode = test.worldMap.getNode(tileX, tileY);
-			if (startNode.type == TiledNode.TILE_FLOOR) {
+			if (startNode.type == IndexedTiledNode.TILE_FLOOR) {
 				test.startTileX = tileX;
 				test.startTileY = tileY;
 				test.updatePath(true);

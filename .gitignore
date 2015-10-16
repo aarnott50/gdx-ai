@@ -6,6 +6,7 @@
 # per project ignores, it's cumbersome, but reduces the risk of missing something
 
 # Gradle
+gradle.properties
 .gradle
 build/
 dist/
@@ -33,3 +34,4 @@ local.properties
 .loadpath
 .externalToolBuilders/
 *.launch
+**/doc/

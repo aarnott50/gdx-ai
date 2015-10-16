@@ -22,10 +22,10 @@ import com.badlogic.gdx.math.Vector2;
 
 /** A smoothable path for a generic tiled graph.
  * 
- * @param <N> Type of node, either flat or hierarchical, extending the {@link TiledNode} class
+ * @param <N> Type of node, either flat or hierarchical, extending the {@link IndexedTiledNode} class
  * 
  * @author davebaol */
-public class TiledSmoothableGraphPath<N extends TiledNode<N>> extends DefaultGraphPath<N> implements
+public class TiledSmoothableGraphPath<N extends IndexedTiledNode<N>> extends DefaultGraphPath<N> implements
 	SmoothableGraphPath<N, Vector2> {
 
 	private Vector2 tmpPosition = new Vector2();

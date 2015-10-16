@@ -1,12 +1,12 @@
 /*******************************************************************************
  * Copyright 2014 See AUTHORS file.
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *   http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -18,14 +18,15 @@ package com.badlogic.gdx.ai.tests.pfa.tests.tiled;
 
 import com.badlogic.gdx.ai.pfa.Connection;
 import com.badlogic.gdx.ai.pfa.indexed.IndexedNode;
+import com.badlogic.gdx.ai.pfa.jumppointsearch.TiledNode;
 import com.badlogic.gdx.utils.Array;
 
-/** A node for a {@link TiledGraph}.
- * 
- * @param <N> Type of node, either flat or hierarchical, extending the {@link TiledNode} class
- * 
+/** A node for a {@link IndexedTiledGraph}.
+ *
+ * @param <N> Type of node, either flat or hierarchical, extending the {@link IndexedTiledNode} class
+ *
  * @author davebaol */
-public abstract class TiledNode<N extends TiledNode<N>> implements IndexedNode<N> {
+public abstract class IndexedTiledNode<N extends IndexedTiledNode<N>> implements IndexedNode<N>, TiledNode<N> {
 
 	/** A constant representing an empty tile */
 	public static final int TILE_EMPTY = 0;
@@ -47,7 +48,7 @@ public abstract class TiledNode<N extends TiledNode<N>> implements IndexedNode<N
 
 	protected Array<Connection<N>> connections;
 
-	public TiledNode (int x, int y, int type, Array<Connection<N>> connections) {
+	public IndexedTiledNode (final int x, final int y, final int type, final Array<Connection<N>> connections) {
 		this.x = x;
 		this.y = y;
 		this.type = type;

@@ -21,15 +21,15 @@ import com.badlogic.gdx.ai.utils.Ray;
 import com.badlogic.gdx.ai.utils.RaycastCollisionDetector;
 import com.badlogic.gdx.math.Vector2;
 
-/** A raycast collision detector used for path smoothing against a {@link TiledGraph}.
+/** A raycast collision detector used for path smoothing against a {@link IndexedTiledGraph}.
  * 
- * @param <N> Type of node, either flat or hierarchical, extending the {@link TiledNode} class
+ * @param <N> Type of node, either flat or hierarchical, extending the {@link IndexedTiledNode} class
  * 
  * @author davebaol */
-public class TiledRaycastCollisionDetector<N extends TiledNode<N>> implements RaycastCollisionDetector<Vector2> {
-	TiledGraph<N> worldMap;
+public class TiledRaycastCollisionDetector<N extends IndexedTiledNode<N>> implements RaycastCollisionDetector<Vector2> {
+	IndexedTiledGraph<N> worldMap;
 
-	public TiledRaycastCollisionDetector (TiledGraph<N> worldMap) {
+	public TiledRaycastCollisionDetector (IndexedTiledGraph<N> worldMap) {
 		this.worldMap = worldMap;
 	}
 
@@ -71,7 +71,7 @@ public class TiledRaycastCollisionDetector<N extends TiledNode<N>> implements Ra
 		int ystep = (y0 < y1 ? 1 : -1);
 		for (int x = x0; x <= x1; x++) {
 			N tile = steep ? worldMap.getNode(y, x) : worldMap.getNode(x, y);
-			if (tile.type != TiledNode.TILE_FLOOR) return true; // We've hit a wall
+			if (tile.type != IndexedTiledNode.TILE_FLOOR) return true; // We've hit a wall
 			error += deltay;
 			if (error + error >= deltax) {
 				y += ystep;
